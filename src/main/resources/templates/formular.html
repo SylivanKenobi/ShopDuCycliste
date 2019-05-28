@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formular</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Hallo du Spasti</h1>
+<p th:if="${kunde.id != null}"></p>
+<div class="col-md-6">
+    <form method="post" th:action="@{/kunde/verify}" th:object="${kunde}">
+        <p class="lead"><input class="form-control" type="text" th:field="*{vorname}">Vorname</p>
+        <p class="lead"><input class="form-control" type="text" th:field="*{nachname}">Nachname</p>
+        <p class="lead"><input class="form-control" type="text" th:field="*{strasse}">Strasse</p>
+        <p class="lead"><input class="form-control" type="text" th:field="*{city.plz}">PLZ</p>
+        <p class="lead"><input class="form-control" type="text" th:field="*{city.ort}">Stadt</p>
+        <button>Submit</button>
+    </form>
+</div>
+</body>
+</html>
