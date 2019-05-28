@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Formular</title>
+    <title>HappyWriter</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
@@ -11,7 +11,7 @@
 <div class="col-md-6">
     <form th:object="${kunde}">
         <div class="col-md-3">
-        <h2>Vorname:</h2>
+            <h2>Vorname:</h2>
         </div>
         <div class="col-md-9">
             <h2 th:text="*{vorname}"></h2>
@@ -40,8 +40,12 @@
         <div class="col-md-9">
             <h2 th:text="*{city.ort}"></h2>
         </div>
-        <input type="button" method="post" th:action="@{/kunde/danke}" value="Ja">
-        <input type="button" method="post" th:action="@{/kunde}" value="Nein">
+    </form>
+    <form th:method="get" th:action="@{/kunde/danke}">
+        <button>Ja</button>
+    </form>
+    <form th:method="get" th:action="@{/kunde}">
+        <button>Nein</button>
     </form>
 </div>
 </body>
