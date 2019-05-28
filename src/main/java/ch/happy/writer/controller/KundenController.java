@@ -19,7 +19,7 @@ public class KundenController {
     @Autowired
     KundenService kundenService;
 
-    @GetMapping("/formular")
+    @GetMapping
     public String showForm(Model model) {
         model.addAttribute("kunde", new Kunde());
         return "formular";
@@ -30,5 +30,10 @@ public class KundenController {
         kundenService.saveKunde(kunde);
         model.addAttribute("kunde", kunde);
         return "verify";
+    }
+
+    @GetMapping("/danke")
+    public String danke(Model model) {
+        return "danke";
     }
 }

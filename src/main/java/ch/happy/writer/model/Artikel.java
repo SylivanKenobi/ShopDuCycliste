@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Entity
 public class Artikel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_artikel")
     @SequenceGenerator(name = "seq_artikel")
