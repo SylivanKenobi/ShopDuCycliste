@@ -7,6 +7,8 @@
 </head>
 <body>
 <h1>Wilkommen bei Happy Writer</h1>
-<a href="/warenkorb"> <img th:attr="src=@{DSC0424.JPG}, titel=${'titel'},alt=${'bild'}" th:height="250"/></a>
+<a th:href="@{'/warenkorb/' + ${artikel.get(0).id}}"> <img th:attr="src=@{Etui.JPG}, titel=${'titel'},alt=${'bild'}" th:height="250"/></a>
+<a th:href="@{'/warenkorb/' + ${artikel.get(1).id}}"> <img th:attr="src=@{Holz.JPG}, titel=${'titel1'},alt=${'bild1'}" th:height="250"/></a>
+
 </body>
 </html>

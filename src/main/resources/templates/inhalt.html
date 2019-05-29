@@ -8,5 +8,13 @@
 <body>
 <h1>Wilkommen bei Happy Writer</h1>
 
+<form th:each="inhalt:${inhalte}" class="form-group">
+    <input type="checkbox" th:value="${inhalt.name}" class="checkbox"><label th:text="${inhalt.name}"></label>
+</form>
+<form th:method="post" th:action="@{/selected}">
+    <button>Bestellen</button>
+</form>
+<label th:text="${artikel.bezeichnung}"></label>
+
 </body>
 </html>
