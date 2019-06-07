@@ -28,6 +28,12 @@ public class BestellPosition {
     public BestellPosition() {
     }
 
+    public BestellPosition(Set<Inhalt> inhaltSet, Artikel artikel, Bestellung bestellung) {
+        this.artikel = artikel;
+        this.inhalte = inhalte;
+        this.bestellung = bestellung;
+    }
+
     public Long getId() {
         return id;
     }

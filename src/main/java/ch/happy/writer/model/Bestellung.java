@@ -1,5 +1,7 @@
 package ch.happy.writer.model;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -13,19 +15,17 @@ public class Bestellung {
     @SequenceGenerator(name = "seq_bestellung")
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "kunde_fk")
     private Kunde kunde;
 
-    @NotEmpty
     @NotNull
     private Date datum;
 
-    @NotEmpty
-    @NotNull
     private String bemerkungen;
 
     public Bestellung() {
+        datum = new Date();
     }
 
     public Long getId() {
@@ -44,19 +44,20 @@ public class Bestellung {
         this.kunde = kunde;
     }
 
-    public Date getDatum() {
-        return datum;
-    }
-
-    public void setDatum(Date datum) {
-        this.datum = datum;
-    }
-
     public String getBemerkungen() {
         return bemerkungen;
     }
 
     public void setBemerkungen(String bemerkungen) {
         this.bemerkungen = bemerkungen;
+    }
+
+
+    public Date getDatum() {
+        return datum;
+    }
+
+    public void setDatum(Date datum) {
+        this.datum = datum;
     }
 }
