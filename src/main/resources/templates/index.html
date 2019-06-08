@@ -1,16 +1,18 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>HappyWriter</title>
+    <title>Cyclist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" th:src="@{cyclistLogo.PNG}">
 </head>
 <body>
-<h1>Wilkommen bei Happy Writer</h1>
-<a th:href="@{'/warenkorb/' + ${artikel.get(0).id}}"> <img th:attr="src=@{Etui.JPG}, titel=${'titel'},alt=${'bild'}" th:height="250"/></a>
-<a th:href="@{'/warenkorb/' + ${artikel.get(1).id}}"> <img th:attr="src=@{Holz.JPG}, titel=${'titel1'},alt=${'bild1'}" th:height="250"/></a>
 
-<p th:if="${inhalt}!=null" th:text="${inhalt}"></p>
-
+<h1><img th:class="img-fluid"
+         th:attr="src=@{cyclistLogo.PNG}, titel=${'titel'},alt=${'bild'}"
+         th:height="100"/>Welcome to Cyclist</h1>
+<a th:href="@{/kunde}"><h2>Neukunde</h2> </a>
+<a th:href="@{/kunde/all}"><h2>Kunde</h2> </a>
+<a th:href="@{/kunde/login}"><h2>Admin</h2></a>
 </body>
 </html>

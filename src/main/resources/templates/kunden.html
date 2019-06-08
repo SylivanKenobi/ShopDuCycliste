@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyclist</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<form th:method="get" th:action="@{/shop}">
+    <table th:class="table">
+        <thead>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>Strasse</th>
+        <th>PLZ</th>
+        <th>Ort</th>
+        </thead>
+        <tbody>
+        <tr th:each="kunde : ${kunden}">
+            <td ><input th:type="radio" th:text="${kunde.vorname}" th:value="${kunde.id}" th:name="id" th:object="${kunde}"></td>
+            <td th:text="${kunde.nachname}" th:value="${kunde.nachname}"></td>
+            <td th:text="${kunde.strasse}" th:value="${kunde.strasse}"></td>
+            <td th:text="${kunde.city.plz}" th:value="${kunde.city.plz}"></td>
+            <td th:text="${kunde.city.ort}" th:value="${kunde.city.ort}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <button>Next</button>
+</form>
+</body>
+</html>

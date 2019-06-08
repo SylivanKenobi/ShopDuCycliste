@@ -1,6 +1,6 @@
-package ch.happy.writer.repository;
+package ch.happy.cyclist.repository;
 
-import ch.happy.writer.model.Kunde;
+import ch.happy.cyclist.model.Kunde;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 

@@ -1,10 +1,9 @@
-package ch.happy.writer.model;
+package ch.happy.cyclist.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Set;
 
 @Entity
 public class Artikel {
@@ -16,18 +15,11 @@ public class Artikel {
 
     @NotNull
     @NotEmpty
-    private String bezeichnung;
+    private String model;
 
     @NotNull
     @NotEmpty
     private BigDecimal preis;
-
-    @ManyToMany
-    @JoinTable(
-            name = "konfiguration",
-            joinColumns = @JoinColumn(name = "artikel_id"),
-            inverseJoinColumns = @JoinColumn(name = "inhalt_id"))
-    private Set<Inhalt> inhaltSet;
 
     public Artikel() {
     }
@@ -40,12 +32,12 @@ public class Artikel {
         this.id = id;
     }
 
-    public String getBezeichnung() {
-        return bezeichnung;
+    public String getModel() {
+        return model;
     }
 
-    public void setBezeichnung(String bezeichnung) {
-        this.bezeichnung = bezeichnung;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public BigDecimal getPreis() {
@@ -56,11 +48,4 @@ public class Artikel {
         this.preis = preis;
     }
 
-    public Set<Inhalt> getInhaltSet() {
-        return inhaltSet;
-    }
-
-    public void setInhaltSet(Set<Inhalt> inhaltSet) {
-        this.inhaltSet = inhaltSet;
-    }
 }

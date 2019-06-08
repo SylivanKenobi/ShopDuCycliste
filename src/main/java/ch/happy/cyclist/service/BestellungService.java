@@ -1,7 +1,7 @@
-package ch.happy.writer.service;
+package ch.happy.cyclist.service;
 
-import ch.happy.writer.model.Bestellung;
-import ch.happy.writer.repository.BestellungRepository;
+import ch.happy.cyclist.model.Bestellung;
+import ch.happy.cyclist.repository.BestellungRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

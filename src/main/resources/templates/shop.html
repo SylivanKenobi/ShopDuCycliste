@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cyclist</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="C:\Users\Gilge\cyclist\src\main\resources\static\cyclistLogo.PNG">
+</head>
+<body>
+<h1>Wilkommen bei Happy Writer</h1>
+<div th:class="col-md-8">
+    <a th:href="@{'/warenkorb/?id=' + ${artikelListe.get(0).id}}"> <img th:class="img-fluid" src="/Holz.JPG" alt="rennvelo"
+                                                                       th:height="250"/></a>
+    <a th:href="@{'/warenkorb/?id=' + ${artikelListe.get(1).id}}"> <img th:class="img-fluid" src="/Etui.JPG" alt="bike"
+                                                                       th:height="250"/></a>
+</div>
+<div th:class="col-md-12">
+    <div th:class="col-md-3">
+        <table th:each="positionen : ${bestellpositionen}" th:class="table">
+            <thead>
+            <tr>
+                <th th:text="${positionen.artikel.model}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="equipment : ${positionen.equipmentSet}">
+                <td th:text="${equipment.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:class="col-md-12">
+    <form th:method="get" th:action="@{/shop/danke}">
+        <input th:type="submit" th:name="Bestellen" th:value="Bestellen">
+    </form>
+</div>
+</body>
+</html>

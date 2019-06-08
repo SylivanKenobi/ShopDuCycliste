@@ -1,4 +1,4 @@
-package ch.happy.writer.model;
+package ch.happy.cyclist.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
-public class Inhalt {
+public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_inhalt")
     @SequenceGenerator(name = "seq_inhalt")
@@ -21,14 +21,12 @@ public class Inhalt {
     @NotEmpty
     private BigDecimal preis;
 
-    @ManyToMany
-    @JoinTable(
-            name = "konfiguration",
-            joinColumns = @JoinColumn(name = "inhalt_id"),
-            inverseJoinColumns = @JoinColumn(name = "artikel_id"))
-    private Set<Artikel> artikelSet;
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "artikelFk")
+    private Artikel artikel;
 
-    public Inhalt() {
+
+    public Equipment() {
     }
 
     public Long getId() {
@@ -55,11 +53,11 @@ public class Inhalt {
         this.preis = preis;
     }
 
-    public Set<Artikel> getArtikelSet() {
-        return artikelSet;
+    public Artikel getArtikel() {
+        return artikel;
     }
 
-    public void setArtikelSet(Set<Artikel> artikelSet) {
-        this.artikelSet = artikelSet;
+    public void setArtikel(Artikel artikel) {
+        this.artikel = artikel;
     }
 }

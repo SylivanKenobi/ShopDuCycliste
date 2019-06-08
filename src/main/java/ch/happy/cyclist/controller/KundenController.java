@@ -1,7 +1,7 @@
-package ch.happy.writer.controller;
+package ch.happy.cyclist.controller;
 
-import ch.happy.writer.model.Kunde;
-import ch.happy.writer.service.KundenService;
+import ch.happy.cyclist.model.Kunde;
+import ch.happy.cyclist.service.KundenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,13 +27,24 @@ public class KundenController {
 
     @PostMapping("/verify")
     public String verifyCustomer(@ModelAttribute @Valid Kunde kunde, Model model) {
-        kundenService.saveKunde(kunde);
         model.addAttribute("kunde", kunde);
         return "verify";
     }
-
-    @GetMapping("/danke")
-    public String danke(Model model) {
+/*
+    @PostMapping("/danke")
+    public String danke(@ModelAttribute @Valid Kunde kunde, Model model) {
+        kundenService.saveKunde(kunde);
         return "danke";
+    }*/
+
+    @GetMapping("all")
+    public String showAll(Model model) {
+        model.addAttribute("kunden", kundenService.getAllKunden());
+        return "kunden";
+    }
+
+    @GetMapping("login")
+    public String showLogin(Model model) {
+        return "login";
     }
 }

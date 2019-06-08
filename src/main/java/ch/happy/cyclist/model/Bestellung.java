@@ -1,11 +1,10 @@
-package ch.happy.writer.model;
-
-import org.springframework.lang.Nullable;
+package ch.happy.cyclist.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Bestellung {
@@ -24,8 +23,17 @@ public class Bestellung {
 
     private String bemerkungen;
 
+    @OneToMany
+    @JoinColumn(name = "bestellungFk")
+    private List<BestellPosition> bestellPositionList;
+
     public Bestellung() {
         datum = new Date();
+    }
+
+    public Bestellung(Kunde kunde, List<BestellPosition> bestellPositionList) {
+        this.kunde = kunde;
+        this.bestellPositionList = bestellPositionList;
     }
 
     public Long getId() {
@@ -59,5 +67,13 @@ public class Bestellung {
 
     public void setDatum(Date datum) {
         this.datum = datum;
+    }
+
+    public List<BestellPosition> getBestellPositionList() {
+        return bestellPositionList;
+    }
+
+    public void setBestellPositionList(List<BestellPosition> bestellPositionList) {
+        this.bestellPositionList = bestellPositionList;
     }
 }

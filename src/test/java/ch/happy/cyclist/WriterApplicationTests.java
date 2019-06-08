@@ -1,4 +1,4 @@
-package ch.happy.writer;
+package ch.happy.cyclist;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

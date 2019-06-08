@@ -1,14 +1,12 @@
-package ch.happy.writer.service;
+package ch.happy.cyclist.service;
 
-import ch.happy.writer.model.Artikel;
-import ch.happy.writer.model.BestellPosition;
-import ch.happy.writer.model.Inhalt;
-import ch.happy.writer.repository.BestellPositionRepository;
+import ch.happy.cyclist.model.BestellPosition;
+import ch.happy.cyclist.repository.BestellPositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
-import java.util.Set;
+import java.util.List;
 
 @Service
 public class BestellPositionService {
@@ -18,6 +16,10 @@ public class BestellPositionService {
 
     public void savePos(@Valid BestellPosition bestellPosition){
         bestellPositionRepository.saveAndFlush(bestellPosition);
+    }
+
+    public List<BestellPosition> getAll(){
+        return bestellPositionRepository.findAll();
     }
 
 }

@@ -1,4 +1,4 @@
-package ch.happy.writer.model;
+package ch.happy.cyclist.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -25,7 +25,7 @@ public class Kunde {
     @NotNull
     private String strasse;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "cityFk")
     private City city;
 

@@ -1,11 +1,8 @@
-package ch.happy.writer.repository;
+package ch.happy.cyclist.repository;
 
-import ch.happy.writer.model.BestellPosition;
-import ch.happy.writer.model.Inhalt;
+import ch.happy.cyclist.model.BestellPosition;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.Set;
 
 
 public interface BestellPositionRepository extends JpaRepository<BestellPosition, Long>, CrudRepository<BestellPosition, Long> {

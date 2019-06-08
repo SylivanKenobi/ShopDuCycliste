@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HappyWriter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Wilkommen bei Happy Writer</h1>
+<div class="col-md-4">
+    <form class="form-group" th:method="get" th:action="@{/shop/checked}">
+        <table th:class="table" th:if="${artikel?.id}">
+            <thead>
+            <th><input th:type="text" th:text="${artikel?.model}" th:value="${artikel.id}" th:name="artikel" hidden></th>
+            </thead>
+            <tbody>
+            <tr th:each="equipment : ${equipmentList}">
+                <td>
+                    <input th:type="checkbox" th:value="${equipment.id}" th:name="equipment">
+                    <label th:type="text" th:text="${equipment.name}"></label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <button>Hinzufügen</button>
+    </form>
+</div>
+</body>
+</html>

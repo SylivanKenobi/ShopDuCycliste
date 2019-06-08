@@ -1,4 +1,4 @@
-package ch.happy.writer.model;
+package ch.happy.cyclist.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

@@ -1,49 +1,30 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>HappyWriter</title>
+    <title>Cyclist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 <h1>Sind diese Angaben Korrekt?</h1>
-<p th:if="${kunde.id != null}"></p>
-<div class="col-md-6">
-    <form th:object="${kunde}">
-        <div class="col-md-3">
-            <h2>Vorname:</h2>
-        </div>
-        <div class="col-md-9">
-            <h2 th:text="*{vorname}"></h2>
-        </div>
-        <div class="col-md-3">
-            <h2>Nachname:</h2>
-        </div>
-        <div class="col-md-9">
-            <h2 th:text="*{nachname}"></h2>
-        </div>
-        <div class="col-md-3">
-            <h2>Strasse:</h2>
-        </div>
-        <div class="col-md-9">
-            <h2 th:text="*{strasse}"></h2>
-        </div>
-        <div class="col-md-3">
-            <h2>PLZ:</h2>
-        </div>
-        <div class="col-md-9">
-            <h2 th:text="*{city.plz}"></h2>
-        </div>
-        <div class="col-md-3">
-            <h2>Ort:</h2>
-        </div>
-        <div class="col-md-9">
-            <h2 th:text="*{city.ort}"></h2>
-        </div>
-    </form>
-    <form th:method="get" th:action="@{/kunde/danke}">
-        <button>Ja</button>
-    </form>
+<div th:class="col-md-12">
+    <div th:class="col-md-6">
+        <form th:method="post" th:action="@{/shop}" th:object="${kunde}">
+            <p class="lead"><input class="form-control" type="text" th:field="*{vorname}" th:value="*{vorname}">Vorname
+            </p>
+            <p class="lead"><input class="form-control" type="text" th:field="*{nachname}" th:value="*{nachname}">Nachname
+            </p>
+            <p class="lead"><input class="form-control" type="text" th:field="*{strasse}" th:value="*{strasse}">Strasse
+            </p>
+            <p class="lead"><input class="form-control" type="text" th:field="*{city.plz}" th:value="*{city.plz}">PLZ
+            </p>
+            <p class="lead"><input class="form-control" type="text" th:field="*{city.ort}" th:value="*{city.ort}">Stadt
+            </p>
+            <input th:type="submit" th:value="Ja">
+        </form>
+    </div>
+</div>
+<div th:class="col-md-2">
     <form th:method="get" th:action="@{/kunde}">
         <button>Nein</button>
     </form>
