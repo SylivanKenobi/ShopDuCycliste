@@ -5,10 +5,8 @@ import ch.happy.cyclist.service.KundenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 
@@ -30,21 +28,20 @@ public class KundenController {
         model.addAttribute("kunde", kunde);
         return "verify";
     }
-/*
-    @PostMapping("/danke")
-    public String danke(@ModelAttribute @Valid Kunde kunde, Model model) {
-        kundenService.saveKunde(kunde);
-        return "danke";
-    }*/
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public String showAll(Model model) {
         model.addAttribute("kunden", kundenService.getAllKunden());
         return "kunden";
     }
 
-    @GetMapping("login")
+    @GetMapping("/login")
     public String showLogin(Model model) {
         return "login";
+    }
+
+    @GetMapping("admin")
+    public String admin(Model model) {
+        return "admin";
     }
 }

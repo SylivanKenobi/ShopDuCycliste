@@ -14,12 +14,16 @@ public class BestellPositionService {
     @Autowired
     BestellPositionRepository bestellPositionRepository;
 
-    public void savePos(@Valid BestellPosition bestellPosition){
+    public void savePos(@Valid BestellPosition bestellPosition) {
         bestellPositionRepository.saveAndFlush(bestellPosition);
     }
 
-    public List<BestellPosition> getAll(){
+    public List<BestellPosition> getAll() {
         return bestellPositionRepository.findAll();
+    }
+
+    public void saveAll(List<BestellPosition> bestellPositionen) {
+        bestellPositionRepository.saveAll(bestellPositionen);
     }
 
 }

@@ -33,11 +33,11 @@ public class BestellungsController {
     private List<Artikel> artikelListe;
     private Set<Equipment> equipmentSet;
     private Kunde kunde;
-    private List<BestellPosition> bestellPositionen;
+    private List<BestellPosition> bestellPositionen = new ArrayList<>();
 
     @GetMapping
     public String showShop(@RequestParam("id") Optional<Long> kundeId, Model model) {
-        kunde=kundenService.getKunde(kundeId.get());
+        kunde = kundenService.getKunde(kundeId.get());
         artikelListe = artikelService.getAllArtikel();
         model.addAttribute("artikelListe", artikelListe);
         return "shop";
@@ -45,7 +45,6 @@ public class BestellungsController {
 
     @GetMapping("/checked")
     public String selected(@RequestParam("equipment") Optional<List<Long>> equipmentId, @RequestParam("artikel") Optional<Long> artikelId, Model model) {
-        bestellPositionen = new ArrayList<>();
         artikelListe = artikelService.getAllArtikel();
         if (equipmentId.isPresent()) {
             equipmentSet = new HashSet<>();
@@ -56,12 +55,16 @@ public class BestellungsController {
         bestellPositionen.add(new BestellPosition(equipmentSet, artikelService.getArtikel(artikelId.get())));
         model.addAttribute("bestellpositionen", bestellPositionen);
         model.addAttribute("artikelListe", artikelListe);
+        bestellPositionService.saveAll(bestellPositionen);
+        bestellungService.saveBestellung(new Bestellung(kunde, bestellPositionen));
         return "shop";
     }
 
     @GetMapping("danke")
     public String checkout(Model model) {
-        bestellungService.saveBestellung(new Bestellung(kunde,bestellPositionen));
+        System.out.println(bestellPositionen.get(0).getArtikel().getModel());
+        bestellPositionService.saveAll(bestellPositionen);
+
         return "danke";
     }
 }

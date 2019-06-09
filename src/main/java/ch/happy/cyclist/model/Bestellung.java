@@ -34,6 +34,7 @@ public class Bestellung {
     public Bestellung(Kunde kunde, List<BestellPosition> bestellPositionList) {
         this.kunde = kunde;
         this.bestellPositionList = bestellPositionList;
+        this.datum = new Date();
     }
 
     public Long getId() {
