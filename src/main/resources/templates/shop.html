@@ -1,36 +1,63 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Cyclist</title>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="C:\Users\Gilge\cyclist\src\main\resources\static\cyclistLogo.PNG">
+    <title>Shop du Cycliste</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href="/cyclistLogo.PNG">
 </head>
 <body>
-<h1>Wilkommen bei Happy Writer</h1>
-<div th:class="col-md-8">
-    <a th:href="@{'/warenkorb/?id=' + ${artikelListe.get(0).id}}"> <img th:class="img-fluid" src="/mountainbike.jpg" alt="bike"
-                                                                       th:height="250"/></a>
-    <a th:href="@{'/warenkorb/?id=' + ${artikelListe.get(1).id}}"> <img th:class="img-fluid" src="/rennvelo.jpg" alt="rennvelo"
-                                                                       th:height="250"/></a>
+
+<div class="container">
+    <h1>Shop du Cycliste</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <a th:href="@{'/warenkorb/?id=' + ${artikelListe.get(0).id}}"> <img class="img-fluid" src="/mountainbike.jpg"
+                                                                                    alt="bike"
+                                                                                    height="250"/></a>
+                    <div class="caption">
+                        <p>Specialized Stumpjumer</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <a th:href="@{'/warenkorb/?id=' + ${artikelListe.get(1).id}}"> <img class="img-fluid" src="/rennvelo.jpg"
+                                                                                    alt="rennvelo"
+                                                                                    height="250"/></a>
+                    <div class="caption">
+                        <h5>Cerlvélo S5</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
 </div>
-<div th:class="col-md-12">
+
+<div th:class="container">
     <div th:class="col-md-3">
         <table th:each="positionen : ${bestellpositionen}" th:class="table">
             <thead>
             <tr>
                 <th th:text="${positionen.artikel.model}"></th>
+                <th>Preis</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="equipment : ${positionen.equipmentSet}">
                 <td th:text="${equipment.name}"></td>
+                <td th:text="${equipment.preis}"></td>
             </tr>
             </tbody>
         </table>
+        <label th:text="'Total: '+${total}"></label>
     </div>
 </div>
-<div th:class="col-md-12">
+<div th:class="container">
     <form th:method="get" th:action="@{/shop/danke}">
         <input th:type="submit" th:name="Bestellen" th:value="Bestellen">
     </form>

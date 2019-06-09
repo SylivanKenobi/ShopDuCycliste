@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>HappyWriter</title>
+    <title>Shop du Cycliste</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href="/cyclistLogo.PNG">
 </head>
 <body>
-<h1>Wilkommen bei Happy Writer</h1>
+<h1>Wähle dein Zubehör</h1>
 <div class="col-md-4">
     <form class="form-group" th:method="get" th:action="@{/shop/checked}">
         <table th:class="table" th:if="${artikel?.id}">

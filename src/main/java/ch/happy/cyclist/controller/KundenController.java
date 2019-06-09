@@ -1,6 +1,7 @@
 package ch.happy.cyclist.controller;
 
 import ch.happy.cyclist.model.Kunde;
+import ch.happy.cyclist.service.CityService;
 import ch.happy.cyclist.service.KundenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,9 @@ public class KundenController {
     @Autowired
     KundenService kundenService;
 
+    @Autowired
+    CityService cityService;
+
     @GetMapping
     public String showForm(Model model) {
         model.addAttribute("kunde", new Kunde());
@@ -26,6 +30,7 @@ public class KundenController {
     @PostMapping("/verify")
     public String verifyCustomer(@ModelAttribute @Valid Kunde kunde, Model model) {
         model.addAttribute("kunde", kunde);
+        kundenService.saveKunde(kunde);
         return "verify";
     }
 

@@ -36,6 +36,7 @@ public class Kunde {
     private Date kundeSeit;
 
     public Kunde() {
+        this.kundeSeit = new Date();
     }
 
     public Long getId() {

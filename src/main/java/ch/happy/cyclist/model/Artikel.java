@@ -19,7 +19,7 @@ public class Artikel {
 
     @NotNull
     @NotEmpty
-    private BigDecimal preis;
+    private Double preis;
 
     public Artikel() {
     }
@@ -40,11 +40,11 @@ public class Artikel {
         this.model = model;
     }
 
-    public BigDecimal getPreis() {
+    public Double getPreis() {
         return preis;
     }
 
-    public void setPreis(BigDecimal preis) {
+    public void setPreis(Double preis) {
         this.preis = preis;
     }
 

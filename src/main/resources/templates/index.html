@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Cyclist</title>
+    <title>Shop du Cycliste</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="icon" th:src="@{cyclistLogo.PNG}">
+    <link rel="icon" href="/cyclistLogo.PNG">
 </head>
 <body>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-">
-            <a class="navbar-brand" href="#">WebSiteName</a>
+            <a class="navbar-brand" href="/">Shop du Cycliste</a>
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
@@ -20,10 +20,13 @@
         </ul>
     </div>
 </nav>
-
-<h1><img th:class="img-fluid"
-         th:attr="src=@{cyclistLogo.PNG}, titel=${'titel'},alt=${'bild'}"
-         th:height="100"/>Welcome to Cyclist</h1>
-<a th:href="@{/kunde/logout}"><button>Logout</button></a>
+<div class="container">
+    <h1><img th:class="img-fluid"
+             th:attr="src=@{cyclistLogo.PNG}, titel=${'titel'},alt=${'bild'}"
+             th:height="100"/>Welcome to Shop du Cyclist</h1>
+    <a th:href="@{/kunde/logout}">
+        <button>Logout</button>
+    </a>
+</div>
 </body>
 </html>

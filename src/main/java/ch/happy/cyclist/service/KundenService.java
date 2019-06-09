@@ -15,9 +15,12 @@ public class KundenService {
     KundenRepository kundenRepository;
 
     public void saveKunde(@Valid Kunde kunde) {
-        kundenRepository.saveAndFlush(kunde);
+        kundenRepository.save(kunde);
     }
 
+    public void flushKunde(){
+        kundenRepository.flush();
+    }
     public Kunde getKunde(Long id) {
         return kundenRepository.findById(id).get();
     }

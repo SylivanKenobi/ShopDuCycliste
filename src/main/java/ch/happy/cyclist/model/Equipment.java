@@ -19,7 +19,7 @@ public class Equipment {
 
     @NotNull
     @NotEmpty
-    private BigDecimal preis;
+    private Double preis;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "artikelFk")
@@ -28,6 +28,7 @@ public class Equipment {
 
     public Equipment() {
     }
+
 
     public Long getId() {
         return id;
@@ -45,11 +46,11 @@ public class Equipment {
         this.name = name;
     }
 
-    public BigDecimal getPreis() {
+    public Double getPreis() {
         return preis;
     }
 
-    public void setPreis(BigDecimal preis) {
+    public void setPreis(Double preis) {
         this.preis = preis;
     }
 
