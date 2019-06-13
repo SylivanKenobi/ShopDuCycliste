@@ -25,9 +25,9 @@
             <input th:type="submit" th:value="Ja">
         </form>
     </div>
-    <div th:class="col-md-2">
-        <form th:method="get" th:action="@{/kunde}">
-            <button>Nein</button>
+    <div th:class="col-md-12">
+        <form th:method="get" th:action="@{/kunde/delete/}">
+            <button th:value="${kunde.id}" th:name="id">Nein</button>
         </form>
     </div>
 </div>

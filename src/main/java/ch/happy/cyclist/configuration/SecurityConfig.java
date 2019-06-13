@@ -1,4 +1,4 @@
-package ch.happy.cyclist;
+package ch.happy.cyclist.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,14 +14,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/kunde/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
 
                 .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/kunde/admin", true)
+                .defaultSuccessUrl("/admin", true)
                 .failureUrl("/login.html?error=true")
                 .and()
                 .logout()

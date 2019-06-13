@@ -12,28 +12,15 @@
     <h1>Shop du Cycliste</h1>
     <div class="row">
         <div class="col-md-4">
-            <div class="thumbnail">
-                <a th:href="@{'/warenkorb/?id=' + ${artikelListe.get(0).id}}"> <img class="img-fluid" src="/mountainbike.jpg"
+            <div class="thumbnail" th:each="artikel : ${artikelListe}">
+                <a th:href="@{'/warenkorb/?id=' + ${artikel.id}}"> <img class="img-fluid" th:src="${artikel.pfad}"
                                                                                     alt="bike"
                                                                                     height="250"/></a>
                     <div class="caption">
-                        <p>Specialized Stumpjumer</p>
+                        <p th:text="${artikel.model}"></p>
                     </div>
                 </a>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <a th:href="@{'/warenkorb/?id=' + ${artikelListe.get(1).id}}"> <img class="img-fluid" src="/rennvelo.jpg"
-                                                                                    alt="rennvelo"
-                                                                                    height="250"/></a>
-                    <div class="caption">
-                        <h5>Cerlvélo S5</h5>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4">
         </div>
     </div>
 </div>
@@ -59,7 +46,7 @@
 </div>
 <div th:class="container">
     <form th:method="get" th:action="@{/shop/danke}">
-        <input th:type="submit" th:name="Bestellen" th:value="Bestellen">
+        <input th:type="submit" th:value="Bestellen">
     </form>
 </div>
 </body>

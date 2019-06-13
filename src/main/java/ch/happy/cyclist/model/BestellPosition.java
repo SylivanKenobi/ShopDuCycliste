@@ -11,7 +11,7 @@ public class BestellPosition {
     @SequenceGenerator(name = "seq_bestellung_pos")
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "artikel_fk")
     private Artikel artikel;
 

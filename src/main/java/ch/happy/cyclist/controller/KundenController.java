@@ -40,13 +40,9 @@ public class KundenController {
         return "kunden";
     }
 
-    @GetMapping("/login")
-    public String showLogin(Model model) {
-        return "login";
-    }
-
-    @GetMapping("admin")
-    public String admin(Model model) {
-        return "admin";
+    @GetMapping("/delete")
+    public RedirectView abortNewUser(@RequestParam("id") Long id) {
+        kundenService.deleteKunde(id);
+        return new RedirectView("/kunde");
     }
 }

@@ -16,7 +16,7 @@
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/kunde">Neukunde</a></li>
             <li><a href="/kunde/all">Kunde</a></li>
-            <li><a href="/kunde/admin">Login</a></li>
+            <li><a href="/admin">Login</a></li>
         </ul>
     </div>
 </nav>
@@ -24,9 +24,9 @@
     <h1><img th:class="img-fluid"
              th:attr="src=@{cyclistLogo.PNG}, titel=${'titel'},alt=${'bild'}"
              th:height="100"/>Welcome to Shop du Cyclist</h1>
-    <a th:href="@{/kunde/logout}">
+    <form th:action="@{/kunde/logout}" th:method="get">
         <button>Logout</button>
-    </a>
+    </form>
 </div>
 </body>
 </html>

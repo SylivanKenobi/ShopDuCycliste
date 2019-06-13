@@ -18,10 +18,9 @@ public class Equipment {
     private String name;
 
     @NotNull
-    @NotEmpty
     private Double preis;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinColumn(name = "artikelFk")
     private Artikel artikel;
 

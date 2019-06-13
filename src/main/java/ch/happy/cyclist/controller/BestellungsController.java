@@ -45,9 +45,8 @@ public class BestellungsController {
     @GetMapping
     public String showShop(@RequestParam("id") Optional<Long> kundeId, Model model) {
         bestellPositionen = new ArrayList<>();
-        kundenService.flushKunde();
         this.kunde = kundeId.get();
-        artikelListe = artikelService.getAllArtikel();
+        artikelListe = artikelService.getAllArtikelAktiv();
         model.addAttribute("total", total);
         model.addAttribute("artikelListe", artikelListe);
         return "shop";
@@ -55,7 +54,7 @@ public class BestellungsController {
 
     @GetMapping("/checked")
     public String selected(@RequestParam("equipment") Optional<List<Long>> equipmentId, @RequestParam("artikel") Optional<Long> artikelId, Model model) {
-        artikelListe = artikelService.getAllArtikel();
+        artikelListe = artikelService.getAllArtikelAktiv();
         total = 0.0;
         if (equipmentId.isPresent()) {
             equipmentSet = new HashSet<>();

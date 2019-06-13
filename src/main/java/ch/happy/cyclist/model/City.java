@@ -5,6 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"ort" , "plz"})})
 public class City {
 
     @Id

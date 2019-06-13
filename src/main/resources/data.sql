@@ -1,5 +1,5 @@
-insert into artikel(id,model,preis) values(100,"Mountainbike",4500);
-insert into artikel(id,model,preis) values(101,"Rennvelo",7500);
+insert into artikel(id,model,preis, aktiv, pfad) values(100,"Mountainbike",4500, 1, "/mountainbike.jpg");
+insert into artikel(id,model,preis, aktiv, pfad) values(101,"Rennvelo",7500, 1, "/rennvelo.jpg");
 
 insert into equipment(id,name,preis, artikel_fk) values(100,"CushCore",12,100);
 insert into equipment(id,name,preis, artikel_fk) values(101,"Pumpe",13,101);

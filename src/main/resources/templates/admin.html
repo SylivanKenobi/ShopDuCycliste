@@ -6,8 +6,59 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-<form th:method="get" th:action="@{/kunde/logout}">
-    <button>Logout</button>
-</form>
+<div class="container">
+    <div class="row">
+        <form th:method="get" th:action="@{/admin/delete}">
+            <table class="table">
+                <thead>
+                <th>Model</th>
+                <th>Preis</th>
+                <th>Aktiv</th>
+                </thead>
+                <tbody>
+                <tr th:each="artikel : ${artikelListe}">
+                    <td><input th:type="checkbox" th:text="${artikel.model}" th:value="${artikel.id}" th:name="id"></td>
+                    <td th:text="${artikel.preis}"></td>
+                    <td th:text="${artikel.aktiv}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <input class="btn btn-primary" th:type="submit" th:value="Löschen">
+        </form>
+    </div>
+    <div class="row">
+        <form th:method="post" th:action="@{admin/create}" th:object="${artikel}">
+            <p class="lead"><input class="form-control" type="text" th:name="model" th:value="*{model}">Model</p>
+            <p class="lead"><input class="form-control" type="text" th:name="preis" th:value="*{preis}">Preis</p>
+            <p class="lead"><input class="form-control" type="text" th:name="pfad" th:value="*{pfad}">Bildpfad</p>
+            <p class="lead">Aktiv</p>
+            <select th:name="aktiv" class="form-control">
+                <option value="1">Ja</option>
+                <option value="0">Nein</option>
+            </select>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Artikel hinzufügen">
+        </form>
+    </div>
+    <div class="row">
+        <form th:method="post" th:action="@{/admin/equipment}" th:object="${equipment}">
+            <p class="lead"><input class="form-control" type="text" th:name="name" th:value="*{name}">Name</p>
+            <p class="lead"><input class="form-control" type="text" th:name="preis" th:value="*{preis}">Preis</p>
+            <p class="lead">Artikel</p>
+            <select th:name="artikel" class="form-control">
+                <option value="">-------</option>
+                <option th:each="artikel : ${artikelListe}" th:text="${artikel.model}"
+                        th:value="${artikel.id}"></option>
+            </select>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Equipment hinzufügen">
+        </form>
+    </div>
+    <form th:method="get" th:action="@{/kunde/logout}">
+        <div class="row">
+            <input class="btn btn-primary" type="submit" value="Logout">
+        </div>
+    </form>
+</div>
 </body>
 </html>
