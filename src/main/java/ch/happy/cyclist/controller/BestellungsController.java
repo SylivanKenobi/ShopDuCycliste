@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 @Controller
@@ -44,11 +43,13 @@ public class BestellungsController {
 
     @GetMapping
     public String showShop(@RequestParam("id") Optional<Long> kundeId, Model model) {
+        total = 0.0;
         bestellPositionen = new ArrayList<>();
         this.kunde = kundeId.get();
         artikelListe = artikelService.getAllArtikelAktiv();
         model.addAttribute("total", total);
         model.addAttribute("artikelListe", artikelListe);
+        model.addAttribute("total", total);
         return "shop";
     }
 
@@ -64,9 +65,9 @@ public class BestellungsController {
         }
         bestellPositionen.add(new BestellPosition(equipmentSet, artikelService.getArtikel(artikelId.get())));
         for (BestellPosition bestellPosition : bestellPositionen) {
-            total+=bestellPosition.getArtikel().getPreis();
+            total += bestellPosition.getArtikel().getPreis();
             for (Equipment equipment : bestellPosition.getEquipmentSet()) {
-                total+=equipment.getPreis();
+                total += equipment.getPreis();
             }
         }
         model.addAttribute("total", total);
@@ -79,7 +80,6 @@ public class BestellungsController {
     public String checkout(Model model) {
         bestellPositionService.saveAll(bestellPositionen);
         bestellungService.saveBestellung(new Bestellung(kundenService.getKunde(kunde), bestellPositionService.getAll()));
-
         return "danke";
     }
 }

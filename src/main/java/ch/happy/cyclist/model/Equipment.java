@@ -24,6 +24,8 @@ public class Equipment {
     @JoinColumn(name = "artikelFk")
     private Artikel artikel;
 
+    @Column(nullable = false)
+    private Integer aktiv;
 
     public Equipment() {
     }
@@ -59,5 +61,13 @@ public class Equipment {
 
     public void setArtikel(Artikel artikel) {
         this.artikel = artikel;
+    }
+
+    public Integer getAktiv() {
+        return aktiv;
+    }
+
+    public void setAktiv(Integer aktiv) {
+        this.aktiv = aktiv;
     }
 }

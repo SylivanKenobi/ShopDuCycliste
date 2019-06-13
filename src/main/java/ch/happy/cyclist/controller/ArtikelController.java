@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -29,15 +28,17 @@ public class ArtikelController {
         model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
         model.addAttribute("artikel" , new Artikel());
         model.addAttribute("equipment", new Equipment());
+        model.addAttribute("equipments", equipmentService.getAllAktiv());
         return "admin";
     }
 
     @GetMapping("/delete")
     public String deleteArtikel(@RequestParam("id")Optional<List<Long>> id, Model model) {
         artikelService.deleteArtikelList(id.get());
-        model.addAttribute("artikelListe", artikelService.getAllArtikel());
+        model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
         model.addAttribute("artikel" , new Artikel());
         model.addAttribute("equipment", new Equipment());
+        model.addAttribute("equipments", equipmentService.getAllAktiv());
         return "admin";
     }
 
@@ -46,8 +47,9 @@ public class ArtikelController {
         artikel.setAktiv(aktiv.get());
         artikelService.saveArtikel(artikel);
         model.addAttribute("artikel" , new Artikel());
-        model.addAttribute("artikelListe", artikelService.getAllArtikel());
+        model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
         model.addAttribute("equipment", new Equipment());
+        model.addAttribute("equipments", equipmentService.getAllAktiv());
         return "admin";
     }
 
@@ -56,8 +58,19 @@ public class ArtikelController {
         equipment.setArtikel(artikelService.getArtikel(aktiv.get()));
         equipmentService.saveEquipment(equipment);
         model.addAttribute("artikel" , new Artikel());
-        model.addAttribute("artikelListe", artikelService.getAllArtikel());
+        model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
         model.addAttribute("equipment", new Equipment());
+        model.addAttribute("equipments", equipmentService.getAllAktiv());
+        return "admin";
+    }
+
+    @PostMapping("/deleteEquipment")
+    public String deleteEquipment(@RequestParam("id")Optional<List<Long>> id, Model model) {
+        equipmentService.deleteEquipmentList(id.get());
+        model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
+        model.addAttribute("artikel" , new Artikel());
+        model.addAttribute("equipment", new Equipment());
+        model.addAttribute("equipments", equipmentService.getAllAktiv());
         return "admin";
     }
 }

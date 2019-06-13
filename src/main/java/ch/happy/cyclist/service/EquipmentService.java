@@ -15,7 +15,7 @@ public class EquipmentService {
     @Autowired
     EquipmentRepository equipmentRepository;
 
-    public void saveEquipment(@Valid Equipment equipment){
+    public void saveEquipment(@Valid Equipment equipment) {
         equipmentRepository.saveAndFlush(equipment);
     }
 
@@ -27,14 +27,36 @@ public class EquipmentService {
         return equipmentRepository.findAll();
     }
 
-    public  List<Equipment> getAllByFk(Long Fk){
-        List<Equipment> allEquipment  = equipmentRepository.findAll();
+    public List<Equipment> getAllByFk(Long Fk) {
+        List<Equipment> allEquipment = equipmentRepository.findAll();
         List<Equipment> sortedEquipment = new ArrayList<>();
-        for(Equipment equipment : allEquipment){
-            if(equipment.getArtikel().getId()==Fk){
+        for (Equipment equipment : allEquipment) {
+            if (equipment.getArtikel().getId() == Fk) {
                 sortedEquipment.add(equipment);
             }
         }
-        return  sortedEquipment;
+        return sortedEquipment;
+    }
+
+    public void deleteEquipmentList(List<Long> equipmentList) {
+        for (Long id : equipmentList) {
+            Equipment equipment = equipmentRepository.getOne(id);
+            equipment.setAktiv(0);
+            equipment.setName(equipment.getName());
+            equipment.setPreis(equipment.getPreis());
+            equipment.setArtikel(equipment.getArtikel());
+            equipmentRepository.saveAndFlush(equipment);
+        }
+    }
+
+    public List<Equipment> getAllAktiv() {
+        List<Equipment> sortedArtikel = new ArrayList<>();
+        List<Equipment> artikelList = equipmentRepository.findAll();
+        for (Equipment equipment : artikelList) {
+            if (equipment.getAktiv() == 1) {
+                sortedArtikel.add(equipment);
+            }
+        }
+        return sortedArtikel;
     }
 }
