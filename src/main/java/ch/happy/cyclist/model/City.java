@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull;
  * @author Sylvain Gilgen
  */
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"ort" , "plz"})})
 public class City {
 
     @Id
