@@ -13,6 +13,7 @@ import javax.validation.Valid;
 
 /**
  * Klasse zur Verwaltung von Kunden
+ * @author Sylvain Gilgen
  */
 @Controller
 @RequestMapping("/kunde")

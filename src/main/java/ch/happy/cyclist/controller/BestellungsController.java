@@ -17,6 +17,7 @@ import java.util.*;
 
 /**
  * Controller zur Bestellungsverwaltung
+ * @author Sylvain Gilgen
  */
 @Controller
 @RequestMapping("/shop")

@@ -5,6 +5,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+/**
+ * Klasse Kunde
+ * @author Sylvain Gilgen
+ */
 @Entity
 public class Kunde {
 
@@ -35,6 +39,9 @@ public class Kunde {
 
     private Date kundeSeit;
 
+    /**
+     * Konstruktor erstellt automatisch ein erstellungsdatum
+     */
     public Kunde() {
         this.kundeSeit = new Date();
     }

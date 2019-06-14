@@ -15,6 +15,7 @@ import java.util.Optional;
 
 /**
  * Klasse zur Auswahl von Equipment
+ * @author Sylvain Gilgen
  */
 @Controller
 @RequestMapping("/warenkorb")

@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 /**
  * Klasse zu konfigurierung von SpringSecurity
+ * @author Sylvain Gilgen
  */
 @Configuration
 @EnableWebSecurity

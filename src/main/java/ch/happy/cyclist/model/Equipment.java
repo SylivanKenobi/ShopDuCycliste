@@ -6,6 +6,9 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Set;
 
+/**
+ * Equipment Klasse
+ */
 @Entity
 public class Equipment {
     @Id
@@ -27,6 +30,9 @@ public class Equipment {
     @Column(nullable = false)
     private Integer aktiv;
 
+    /**
+     * Leerer Konstruktor
+     */
     public Equipment() {
     }
 

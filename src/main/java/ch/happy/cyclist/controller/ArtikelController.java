@@ -15,6 +15,7 @@ import java.util.Optional;
 
 /**
  * Controller zur Verwaltung von artikeln und equipment
+ * @author Sylvain Gilgen
  */
 @Controller
 @RequestMapping("/admin")

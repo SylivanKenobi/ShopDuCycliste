@@ -4,6 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Klasse City
+ * @author Sylvain Gilgen
+ */
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = {"ort" , "plz"})})
 public class City {
@@ -21,6 +25,9 @@ public class City {
     @NotNull
     private String plz;
 
+    /**
+     * Leerer City Konstruktor
+     */
     public City() {
     }
 

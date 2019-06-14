@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Klasse Bestellung
+ * @author Sylvain Gilgen
+ */
 @Entity
 public class Bestellung {
 
@@ -27,10 +31,18 @@ public class Bestellung {
     @JoinColumn(name = "bestellungFk")
     private List<BestellPosition> bestellPositionList;
 
+    /**
+     * Leerer Konstruktor
+     */
     public Bestellung() {
         datum = new Date();
     }
 
+    /**
+     * Konstruktor mit den notwendigsten Parametern
+     * @param kunde
+     * @param bestellPositionList
+     */
     public Bestellung(Kunde kunde, List<BestellPosition> bestellPositionList) {
         this.kunde = kunde;
         this.bestellPositionList = bestellPositionList;

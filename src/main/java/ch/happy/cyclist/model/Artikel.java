@@ -4,6 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Artikel Klasse
+ * @author Sylvain Gilgen
+ */
 @Entity
 public class Artikel {
 
@@ -24,9 +28,18 @@ public class Artikel {
 
     private String pfad;
 
+    /**
+     * Leerer Konstruktor
+     */
     public Artikel() {
     }
 
+    /**
+     * Voller Konstrukter zum Artikel erstellen
+     * @param model
+     * @param preis
+     * @param pfad
+     */
     public Artikel(String model, Double preis, String pfad) {
         this.model = model;
         this.preis = preis;

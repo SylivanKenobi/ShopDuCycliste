@@ -3,6 +3,10 @@ package ch.happy.cyclist.model;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * Klasse Bestellposition
+ * @author Sylvain Gilgen
+ */
 @Entity
 public class BestellPosition {
 
@@ -21,9 +25,17 @@ public class BestellPosition {
             inverseJoinColumns = @JoinColumn(name = "equipment_fk"))
     private Set<Equipment> equipmentSet;
 
+    /**
+     * Leerer Konstruktor
+     */
     public BestellPosition() {
     }
 
+    /**
+     * Konstruktor mit den nötigsten Attributen
+     * @param equipmentSet
+     * @param artikel
+     */
     public BestellPosition(Set<Equipment> equipmentSet, Artikel artikel) {
         this.artikel = artikel;
         this.equipmentSet = equipmentSet;
