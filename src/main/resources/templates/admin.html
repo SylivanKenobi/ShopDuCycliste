@@ -18,7 +18,8 @@
 </nav>
 <div class="container">
     <div class="row">
-        <form th:method="get" th:action="@{/admin/delete}">
+        <form th:method="post" th:action="@{/admin/delete}">
+            <h2>Artikel löschen</h2>
             <table class="table">
                 <thead>
                 <th>Model</th>
@@ -36,6 +37,7 @@
     </div>
     <div class="row">
         <form th:method="post" th:action="@{/admin/deleteEquipment}">
+            <h2>Equipment löschen</h2>
             <table class="table">
                 <thead>
                 <th>Name</th>
@@ -53,20 +55,16 @@
     </div>
     <div class="row">
         <form th:method="post" th:action="@{admin/create}" th:object="${artikel}">
+            <h2>Artikel hinzufügen</h2>
             <p class="lead"><input class="form-control" type="text" th:name="model" th:value="*{model}">Model</p>
             <p class="lead"><input class="form-control" type="text" th:name="preis" th:value="*{preis}">Preis</p>
             <p class="lead"><input class="form-control" type="text" th:name="pfad" th:value="*{pfad}">Bildpfad</p>
-            <p class="lead">Aktiv</p>
-            <select th:name="aktiv" class="form-control">
-                <option value="1">Ja</option>
-                <option value="0">Nein</option>
-            </select>
-            <br>
             <input class="btn btn-primary" type="submit" value="Artikel hinzufügen">
         </form>
     </div>
     <div class="row">
         <form th:method="post" th:action="@{/admin/equipment}" th:object="${equipment}">
+            <h2>Equipment hinzufügen</h2>
             <p class="lead"><input class="form-control" type="text" th:name="name" th:value="*{name}">Name</p>
             <p class="lead"><input class="form-control" type="text" th:name="preis" th:value="*{preis}">Preis</p>
             <p class="lead">Artikel</p>

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Klasse zur Auswahl von Equipment
+ */
 @Controller
 @RequestMapping("/warenkorb")
 public class EquipmentController {
@@ -23,6 +26,12 @@ public class EquipmentController {
     @Autowired
     ArtikelService artikelService;
 
+    /**
+     * Methode zum Auswählen von Equipment
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping(params = "id")
     public String selectInhalt(@RequestParam("id") Optional<Long> id, Model model){
         List<Equipment> equipmentList = equipmentService.getAllByFk(id.get());

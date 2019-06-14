@@ -11,6 +11,9 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 
+/**
+ * Klasse zur Verwaltung von Kunden
+ */
 @Controller
 @RequestMapping("/kunde")
 public class KundenController {
@@ -21,12 +24,23 @@ public class KundenController {
     @Autowired
     CityService cityService;
 
+    /**
+     * Methode zur Darstellung vom Formular
+     * @param model
+     * @return
+     */
     @GetMapping
     public String showForm(Model model) {
         model.addAttribute("kunde", new Kunde());
         return "formular";
     }
 
+    /**
+     * Methode zur Darstellung der Kundenbestätigungsseite
+     * @param kunde
+     * @param model
+     * @return
+     */
     @PostMapping("/verify")
     public String verifyCustomer(@ModelAttribute @Valid Kunde kunde, Model model) {
         model.addAttribute("kunde", kunde);
@@ -34,15 +48,14 @@ public class KundenController {
         return "verify";
     }
 
+    /**
+     * Methode zum anzeigen aller Kunden
+     * @param model
+     * @return
+     */
     @GetMapping("/all")
     public String showAll(Model model) {
         model.addAttribute("kunden", kundenService.getAllKunden());
         return "kunden";
-    }
-
-    @GetMapping("/delete")
-    public RedirectView abortNewUser(@RequestParam("id") Long id) {
-        kundenService.deleteKunde(id);
-        return new RedirectView("/kunde");
     }
 }

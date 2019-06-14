@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.*;
 
+/**
+ * Controller zur Bestellungsverwaltung
+ */
 @Controller
 @RequestMapping("/shop")
 @SessionAttributes("id")
@@ -41,6 +44,12 @@ public class BestellungsController {
     private List<BestellPosition> bestellPositionen;
     private Double total = 0.0;
 
+    /**
+     * Methode zum Anzeigen des Shops
+     * @param kundeId
+     * @param model
+     * @return
+     */
     @GetMapping
     public String showShop(@RequestParam("id") Optional<Long> kundeId, Model model) {
         total = 0.0;
@@ -53,6 +62,13 @@ public class BestellungsController {
         return "shop";
     }
 
+    /**
+     * Methode zum anzeigen der Ausgewählten Artikel+Equipment
+     * @param equipmentId
+     * @param artikelId
+     * @param model
+     * @return
+     */
     @GetMapping("/checked")
     public String selected(@RequestParam("equipment") Optional<List<Long>> equipmentId, @RequestParam("artikel") Optional<Long> artikelId, Model model) {
         artikelListe = artikelService.getAllArtikelAktiv();
@@ -76,6 +92,11 @@ public class BestellungsController {
         return "shop";
     }
 
+    /**
+     * Anzeige der Dankesseite und speichern der Bestellung
+     * @param model
+     * @return
+     */
     @GetMapping("danke")
     public String checkout(Model model) {
         bestellPositionService.saveAll(bestellPositionen);

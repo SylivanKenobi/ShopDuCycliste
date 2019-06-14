@@ -13,6 +13,9 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Controller zur Verwaltung von artikeln und equipment
+ */
 @Controller
 @RequestMapping("/admin")
 public class ArtikelController {
@@ -23,6 +26,11 @@ public class ArtikelController {
     @Autowired
     EquipmentService equipmentService;
 
+    /**
+     * Methode zu Darstellung der Adminseite
+     * @param model
+     * @return
+     */
     @GetMapping
     public String admin(Model model) {
         model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
@@ -32,7 +40,13 @@ public class ArtikelController {
         return "admin";
     }
 
-    @GetMapping("/delete")
+    /**
+     * Methode zum Löschen eines Artikels
+     * @param id
+     * @param model
+     * @return
+     */
+    @PostMapping("/delete")
     public String deleteArtikel(@RequestParam("id")Optional<List<Long>> id, Model model) {
         artikelService.deleteArtikelList(id.get());
         model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
@@ -42,9 +56,31 @@ public class ArtikelController {
         return "admin";
     }
 
+    /**
+     * Methode zum löschen von Equipment
+     * @param id
+     * @param model
+     * @return
+     */
+    @PostMapping("/deleteEquipment")
+    public String deleteEquipment(@RequestParam("id")Optional<List<Long>> id, Model model) {
+        equipmentService.deleteEquipmentList(id.get());
+        model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
+        model.addAttribute("artikel" , new Artikel());
+        model.addAttribute("equipment", new Equipment());
+        model.addAttribute("equipments", equipmentService.getAllAktiv());
+        return "admin";
+    }
+
+    /**
+     * Methode zum erstellen eines Artikels
+     * @param artikel
+     * @param model
+     * @return
+     */
     @PostMapping("/create")
-    public String createArtikel(@ModelAttribute @Valid Artikel artikel,@RequestParam("aktiv")Optional<Integer> aktiv, Model model) {
-        artikel.setAktiv(aktiv.get());
+    public String createArtikel(@ModelAttribute @Valid Artikel artikel, Model model) {
+        artikel.setAktiv(1);
         artikelService.saveArtikel(artikel);
         model.addAttribute("artikel" , new Artikel());
         model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
@@ -53,22 +89,19 @@ public class ArtikelController {
         return "admin";
     }
 
+    /**
+     * Methode zum erstellen eines Equipments
+     * @param equipment
+     * @param aktiv
+     * @param model
+     * @return
+     */
     @PostMapping("/equipment")
     public String createEquipment(@ModelAttribute @Valid Equipment equipment,@RequestParam("artikel")Optional<Long> aktiv, Model model) {
         equipment.setArtikel(artikelService.getArtikel(aktiv.get()));
         equipmentService.saveEquipment(equipment);
         model.addAttribute("artikel" , new Artikel());
         model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
-        model.addAttribute("equipment", new Equipment());
-        model.addAttribute("equipments", equipmentService.getAllAktiv());
-        return "admin";
-    }
-
-    @PostMapping("/deleteEquipment")
-    public String deleteEquipment(@RequestParam("id")Optional<List<Long>> id, Model model) {
-        equipmentService.deleteEquipmentList(id.get());
-        model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());
-        model.addAttribute("artikel" , new Artikel());
         model.addAttribute("equipment", new Equipment());
         model.addAttribute("equipments", equipmentService.getAllAktiv());
         return "admin";
