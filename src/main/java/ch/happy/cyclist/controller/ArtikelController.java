@@ -93,7 +93,6 @@ public class ArtikelController {
     /**
      * Methode zum erstellen eines Equipments
      * @param equipment
-     * @param aktiv
      * @param model
      * @return
      */
