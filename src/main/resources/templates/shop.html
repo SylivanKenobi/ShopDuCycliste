@@ -58,6 +58,9 @@
     <form th:method="get" th:action="@{/shop/danke}">
         <input th:type="submit" th:value="Bestellen" class="btn btn-primary">
     </form>
+    <form>
+        <input type="button" value="Cancel" onclick="history.back()" class="btn btn-primary">
+    </form>
 </div>
 </body>
 </html>

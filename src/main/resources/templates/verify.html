@@ -23,15 +23,15 @@
     <div th:class="col-md-6">
         <form th:method="get" th:action="@{/shop}" th:object="${kunde}">
             <input th:name="id" th:value="*{id}" hidden>
-            <p class="lead"><input class="form-control" type="text" th:value="*{vorname}">Vorname
+            <p class="lead"><input class="form-control" type="text" th:value="*{vorname}" required>Vorname*
             </p>
-            <p class="lead"><input class="form-control" type="text" th:value="*{nachname}">Nachname
+            <p class="lead"><input class="form-control" type="text" th:value="*{nachname}" required>Nachname*
             </p>
-            <p class="lead"><input class="form-control" type="text" th:value="*{strasse}">Strasse
+            <p class="lead"><input class="form-control" type="text" th:value="*{strasse}" required>Strasse*
             </p>
-            <p class="lead"><input class="form-control" type="text" th:value="*{city.plz}">PLZ
+            <p class="lead"><input class="form-control" type="text" th:value="*{city.plz}" required>PLZ*
             </p>
-            <p class="lead"><input class="form-control" type="text" th:value="*{city.ort}">Stadt
+            <p class="lead"><input class="form-control" type="text" th:value="*{city.ort}" required>Stadt*
             </p>
             <input th:type="submit" th:value="Ja">
         </form>

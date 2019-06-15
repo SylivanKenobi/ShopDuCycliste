@@ -34,7 +34,9 @@ public class Equipment {
      * Leerer Konstruktor
      */
     public Equipment() {
+        this.aktiv = 1;
     }
+
 
 
     public Long getId() {

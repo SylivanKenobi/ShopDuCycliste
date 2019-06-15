@@ -98,8 +98,8 @@ public class ArtikelController {
      * @return
      */
     @PostMapping("/equipment")
-    public String createEquipment(@ModelAttribute @Valid Equipment equipment,@RequestParam("artikel")Optional<Long> aktiv, Model model) {
-        equipment.setArtikel(artikelService.getArtikel(aktiv.get()));
+    public String createEquipment(@ModelAttribute @Valid Equipment equipment,@RequestParam("artikel")Optional<Long> artikel, Model model) {
+        equipment.setArtikel(artikelService.getArtikel(artikel.get()));
         equipmentService.saveEquipment(equipment);
         model.addAttribute("artikel" , new Artikel());
         model.addAttribute("artikelListe", artikelService.getAllArtikelAktiv());

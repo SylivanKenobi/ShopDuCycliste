@@ -19,15 +19,22 @@
     </div>
 </nav>
 <div class="container">
-    <h1>Registrieren</h1>
-    <div class="col-md-6">
-        <form method="post" th:action="@{/kunde/verify}" th:object="${kunde}">
-            <p class="lead"><input class="form-control" type="text" th:field="*{vorname}">Vorname</p>
-            <p class="lead"><input class="form-control" type="text" th:field="*{nachname}">Nachname</p>
-            <p class="lead"><input class="form-control" type="text" th:field="*{strasse}">Strasse</p>
-            <p class="lead"><input class="form-control" type="text" th:field="*{city.plz}">PLZ</p>
-            <p class="lead"><input class="form-control" type="text" th:field="*{city.ort}">Stadt</p>
-            <button class="btn btn-primary">Submit</button>
+    <div class="row">
+        <h1>Registrieren</h1>
+        <div class="col-md-6">
+            <form method="post" th:action="@{/kunde/verify}" th:object="${kunde}">
+                <p class="lead"><input class="form-control" type="text" th:field="*{vorname}" required>Vorname*</p>
+                <p class="lead"><input class="form-control" type="text" th:field="*{nachname}" required>Nachname*</p>
+                <p class="lead"><input class="form-control" type="text" th:field="*{strasse}" required>Strasse*</p>
+                <p class="lead"><input class="form-control" type="text" th:field="*{city.plz}" required>PLZ*</p>
+                <p class="lead"><input class="form-control" type="text" th:field="*{city.ort}" required>Stadt*</p>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <form>
+            <input type="button" value="Cancel" onclick="history.back()" class="btn btn-primary">
         </form>
     </div>
 </div>
