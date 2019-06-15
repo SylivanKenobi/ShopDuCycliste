@@ -15,11 +15,11 @@ public class BestellPosition {
     @SequenceGenerator(name = "seq_bestellung_pos")
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "artikel_fk")
     private Artikel artikel;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "equipmentSet",
             joinColumns = @JoinColumn(name = "bestellposition_fk"),
             inverseJoinColumns = @JoinColumn(name = "equipment_fk"))

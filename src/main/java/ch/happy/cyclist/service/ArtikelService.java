@@ -8,16 +8,27 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klasse ArtikelService
+ */
 @Service
 public class ArtikelService {
 
     @Autowired
     private ArtikelRepository artikelRepository;
 
+    /**
+     * Alle Artikel aus der Datenbank auslesen
+     * @return Liste von Artikeln
+     */
     public List<Artikel> getAllArtikel() {
         return artikelRepository.findAll();
     }
 
+    /**
+     * Alle aktiven Artikel aus der Datenbank auslesen
+     * @return Liste von Artikeln
+     */
     public List<Artikel> getAllArtikelAktiv() {
         List<Artikel> sortedArtikel =  new ArrayList<>();
         List<Artikel> artikelList = artikelRepository.findAll();
@@ -29,14 +40,27 @@ public class ArtikelService {
         return sortedArtikel;
     }
 
+    /**
+     * Artikel mit ID finden
+     * @param id
+     * @return Artikel
+     */
     public Artikel getArtikel(Long id) {
         return artikelRepository.findById(id).get();
     }
 
+    /**
+     * Artikel mit ID löschen
+     * @param id
+     */
     public void deleteArtikel(Long id) {
         artikelRepository.deleteById(id);
     }
 
+    /**
+     * Ganze Liste von Artikel auf Inaktiv setzen
+     * @param artikelListId
+     */
     public void deleteArtikelList(List<Long> artikelListId) {
         for (Long id : artikelListId) {
             Artikel artikel = artikelRepository.findById(id).get();
@@ -49,6 +73,10 @@ public class ArtikelService {
         }
     }
 
+    /**
+     * Neuen Artikel speichern
+     * @param artikel
+     */
     public void saveArtikel(Artikel artikel) {
         artikelRepository.saveAndFlush(artikel);
     }

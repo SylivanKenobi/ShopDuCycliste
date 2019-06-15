@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 /**
@@ -17,7 +18,11 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("/kunde")
+@SessionAttributes("id")
 public class KundenController {
+
+    @Autowired
+    HttpSession session;
 
     @Autowired
     KundenService kundenService;
@@ -57,6 +62,7 @@ public class KundenController {
     @GetMapping("/all")
     public String showAll(Model model) {
         model.addAttribute("kunden", kundenService.getAllKunden());
+        model.addAttribute("customerId");
         return "kunden";
     }
 }

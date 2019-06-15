@@ -45,7 +45,8 @@
                 </thead>
                 <tbody>
                 <tr th:each="equipment : ${equipments}">
-                    <td><input th:type="checkbox" th:text="${equipment.name}" th:value="${equipment.id}" th:name="id"></td>
+                    <td><input th:type="checkbox" th:text="${equipment.name}" th:value="${equipment.id}" th:name="id">
+                    </td>
                     <td th:text="${equipment.preis}"></td>
                 </tr>
                 </tbody>
@@ -77,11 +78,14 @@
             <input class="btn btn-primary" type="submit" value="Equipment hinzufügen">
         </form>
     </div>
-    <form th:method="get" th:action="@{/kunde/logout}">
-        <div class="row">
+    <div class="row">
+        <form th:method="get" th:action="@{/kunde/logout}">
             <input class="btn btn-primary" type="submit" value="Logout">
-        </div>
-    </form>
+        </form>
+        <form method="get" th:action="@{/admin}">
+            <input type="submit" class="btn btn-primary" value="Cancel">
+        </form>
+    </div>
 </div>
 </body>
 </html>

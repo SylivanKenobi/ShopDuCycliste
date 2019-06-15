@@ -8,15 +8,14 @@ import ch.happy.cyclist.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.*;
 
 /**
  * Controller zur Bestellungsverwaltung
+ *
  * @author Sylvain Gilgen
  */
 @Controller
@@ -41,12 +40,12 @@ public class BestellungsController {
 
     private List<Artikel> artikelListe;
     private Set<Equipment> equipmentSet;
-    private Long kunde;
     private List<BestellPosition> bestellPositionen;
-    private Double total = 0.0;
+    private Double total;
 
     /**
      * Methode zum Anzeigen des Shops
+     *
      * @param kundeId
      * @param model
      * @return
@@ -54,8 +53,8 @@ public class BestellungsController {
     @GetMapping
     public String showShop(@RequestParam("id") Optional<Long> kundeId, Model model) {
         total = 0.0;
+        model.addAttribute("id",kundeId.get());
         bestellPositionen = new ArrayList<>();
-        this.kunde = kundeId.get();
         artikelListe = artikelService.getAllArtikelAktiv();
         model.addAttribute("total", total);
         model.addAttribute("artikelListe", artikelListe);
@@ -65,13 +64,14 @@ public class BestellungsController {
 
     /**
      * Methode zum anzeigen der Ausgewählten Artikel+Equipment
+     *
      * @param equipmentId
      * @param artikelId
      * @param model
      * @return
      */
-    @GetMapping("/checked")
-    public String selected(@RequestParam("equipment") Optional<List<Long>> equipmentId, @RequestParam("artikel") Optional<Long> artikelId, Model model) {
+    @PostMapping("/checked")
+    public String selected(@ModelAttribute("equipment") Optional<ArrayList<Long>> equipmentId, @ModelAttribute("artikel") Optional<Long> artikelId, Model model) {
         artikelListe = artikelService.getAllArtikelAktiv();
         total = 0.0;
         if (equipmentId.isPresent()) {
@@ -95,13 +95,14 @@ public class BestellungsController {
 
     /**
      * Anzeige der Dankesseite und speichern der Bestellung
-     * @param model
+     *
      * @return
      */
     @GetMapping("danke")
-    public String checkout(Model model) {
+    public String checkout(@SessionAttribute("id") Long id, SessionStatus status) {
         bestellPositionService.saveAll(bestellPositionen);
-        bestellungService.saveBestellung(new Bestellung(kundenService.getKunde(kunde), bestellPositionService.getAll()));
+        bestellungService.saveBestellung(new Bestellung(kundenService.getKunde(id), bestellPositionService.getAll()));
+        status.setComplete();
         return "danke";
     }
 }
