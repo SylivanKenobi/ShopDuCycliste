@@ -64,4 +64,17 @@ public class BestellPosition {
     public void setEquipmentSet(Set<Equipment> equipmentSet) {
         this.equipmentSet = equipmentSet;
     }
+
+    /**
+     * toString Methode
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "BestellPosition{" +
+                "id=" + id +
+                ", artikel=" + artikel +
+                ", equipmentSet=" + equipmentSet +
+                '}';
+    }
 }

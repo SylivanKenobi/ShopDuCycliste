@@ -8,16 +8,28 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Klasse zum verwalten von Citys
+ */
 @Service
 public class CityService {
 
     @Autowired
     CityRepository cityRepository;
 
-    public Optional<City> getCity(Long id) {
-        return cityRepository.findById(id);
+    /**
+     * Methode zum abfragen von einer City
+     * @param id
+     * @return Liste von Citys
+     */
+    public City getCity(Long id) {
+        return cityRepository.findById(id).get();
     }
 
+    /**
+     * Methode um alle Citys abzufragen
+     * @return
+     */
     public List<City> getAllCitys() {
         return cityRepository.findAll();
     }

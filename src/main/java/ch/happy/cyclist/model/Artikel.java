@@ -86,4 +86,19 @@ public class Artikel {
     public void setPfad(String pfad) {
         this.pfad = pfad;
     }
+
+    /**
+     * toString Methode
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Artikel{" +
+                "id=" + id +
+                ", model='" + model + '\'' +
+                ", preis=" + preis +
+                ", aktiv=" + aktiv +
+                ", pfad='" + pfad + '\'' +
+                '}';
+    }
 }

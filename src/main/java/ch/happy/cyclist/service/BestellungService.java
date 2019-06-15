@@ -7,12 +7,20 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 
+/**
+ * Klasse zur Bestellungs verwaltung
+ * @author Sylvain Gilgen
+ */
 @Service
 public class BestellungService {
 
     @Autowired
     BestellungRepository bestellungRepository;
 
+    /**
+     * Methode zum speicher einer Bestellung
+     * @param bestellung
+     */
     public void saveBestellung(@Valid Bestellung bestellung) {
         bestellungRepository.saveAndFlush(bestellung);
     }

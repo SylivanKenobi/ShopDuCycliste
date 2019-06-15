@@ -18,7 +18,7 @@ public class Bestellung {
     @SequenceGenerator(name = "seq_bestellung")
     private Long id;
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "kunde_fk")
     private Kunde kunde;
 
@@ -88,5 +88,20 @@ public class Bestellung {
 
     public void setBestellPositionList(List<BestellPosition> bestellPositionList) {
         this.bestellPositionList = bestellPositionList;
+    }
+
+    /**
+     * toString Methode
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Bestellung{" +
+                "id=" + id +
+                ", kunde=" + kunde +
+                ", datum=" + datum +
+                ", bemerkungen='" + bemerkungen + '\'' +
+                ", bestellPositionList=" + bestellPositionList +
+                '}';
     }
 }

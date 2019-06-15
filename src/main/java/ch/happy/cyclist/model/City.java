@@ -53,4 +53,17 @@ public class City {
     public void setPlz(String plz) {
         this.plz = plz;
     }
+
+    /**
+     * toString Methode
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", ort='" + ort + '\'' +
+                ", plz='" + plz + '\'' +
+                '}';
+    }
 }

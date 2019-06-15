@@ -78,4 +78,19 @@ public class Equipment {
     public void setAktiv(Integer aktiv) {
         this.aktiv = aktiv;
     }
+
+    /**
+     * toString Methode
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", preis=" + preis +
+                ", artikel=" + artikel +
+                ", aktiv=" + aktiv +
+                '}';
+    }
 }

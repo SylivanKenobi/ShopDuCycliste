@@ -101,4 +101,21 @@ public class Kunde {
     public void setKundeSeit(Date kundeSeit) {
         this.kundeSeit = kundeSeit;
     }
+
+    /**
+     * toString Methode
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Kunde{" +
+                "id=" + id +
+                ", vorname='" + vorname + '\'' +
+                ", nachname='" + nachname + '\'' +
+                ", strasse='" + strasse + '\'' +
+                ", city=" + city +
+                ", telNr='" + telNr + '\'' +
+                ", kundeSeit=" + kundeSeit +
+                '}';
+    }
 }
